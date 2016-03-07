@@ -1,0 +1,53 @@
+<!doctype html>
+<html ng-app='todo'>
+<head>
+    <script src="jquery-2.1.4.js"></script>
+    <script src="angular.js"></script>
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="bootstrap/css/style.css">
+
+    <script src="controllers/todoController.js"></script>
+    <script src="services/todoMongoService.js"></script>
+    <script src="todo.js"></script>
+</head>
+<body>
+
+
+<div ng-controller="TodoCrtl">
+    <div id="todoList">
+
+        <header>
+            <h2>Todo List</h2>
+        </header>
+
+        <main>
+            <form class="form-horizontal">
+                <div class="control-group">
+                    <h4>Nieuwe taak</h4>
+                    <div class="controls">
+                        <input class="input-xlarge" id="fn" type="text" ng-model="todo.task" required="required"/>
+                    </div>
+                </div>
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary" ng-click="save()" ng-model-instant>
+                        <a class="icon-plus"></a> Save
+                    </button>
+                </div>
+            </form>
+
+            <table class="table">
+                <h4>Jouw todo's</h4>
+                <tr ng-repeat="todo in todos">
+                    <td>{{todo.task}}</td>
+                    <td class="ctrl-buttons">
+                        <button class="btn btn-primary" ng-click="done(todo._id)"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></button>
+
+                        <button class="btn btn-danger" ng-click="delete(todo._id)"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></button>
+                    </td>
+                </tr>
+            </table>
+        </main>    
+    </div>    
+</div>
+</body>
+</html>

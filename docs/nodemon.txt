@@ -1,0 +1,4 @@
+install mongodb
+
+sudo npm install -g nodemon
+
